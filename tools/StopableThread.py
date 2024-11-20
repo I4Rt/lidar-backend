@@ -34,9 +34,6 @@ class StopableThread(Thread):
         
     
     
-
-    
-    
 if __name__ == '__main__':
     from time import sleep
     from datetime import datetime as dt

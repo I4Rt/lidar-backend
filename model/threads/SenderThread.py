@@ -1,12 +1,16 @@
 from tools.StopableThread import *
 from model.database.Measurement import *
 import requests
+from requests.auth import HTTPBasicAuth
 
 class SenderThread:
     
     def __init__(self):
         self.__thread = StopableThread(target=self.__sendData, looped=True)
-        
+        self.__headers = {'content-type': 'application/json',
+                          'Host': 'vk.com',
+                          'accept': '*/*'
+                          }
         
     def __sendData(self):
         
@@ -14,8 +18,20 @@ class SenderThread:
         m = Measurement.getLastNotSent()
         if m:
             # add base auth
-            resp = requests.post('https://vk.com', verify=False)
+            data = {'data': m.getParamsList()}
+           
+            resp = requests.post('https://vk.com', 
+                                 auth=HTTPBasicAuth('user', 'password'), 
+                                 headers=self.__headers, 
+                                 json=data, 
+                                 verify=False
+                                )
             if resp.status_code == 200: 
+                respBody = resp.json()
+                if respBody:
+                    if 'error' in respBody:
+                        # log the error
+                        pass
                 self.__saveData(m)
             else:
                 pass
