@@ -27,6 +27,7 @@ class SenderThread:
                                  verify=False
                                 )
             if resp.status_code == 200: 
+                print('resp', resp)
                 respBody = resp.json()
                 if respBody:
                     if 'error' in respBody:

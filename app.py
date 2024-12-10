@@ -6,14 +6,18 @@ Base.metadata.create_all(e)
 
 
 if __name__ == "__main__":  
-    saver = SaverThread()
+    addresses = [
+                    {'address':'192.168.0.3', 'port':2111},
+                    {'address':'192.168.0.2', 'port':2111}
+                ]
+    saver = SaverThread(addresses)
     sender = SenderThread()
     
     saver.start()
-    sender.start()
-    sleep(15)
+    # sender.start()
+    sleep(5)
     saver.stop()
-    sender.stop()
+    # sender.stop()
 
 
 

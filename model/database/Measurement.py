@@ -23,9 +23,13 @@ class Measurement(BaseData):
     l_2_2   = Column(Double, nullable=False)
     l_2_3   = Column(Double, nullable=False)
     
-    w_1     = Column(Double, nullable=False)
-    w_2     = Column(Double, nullable=False)
-    w_3     = Column(Double, nullable=False)
+    w_1_1    = Column(Double, nullable=False)
+    w_1_2    = Column(Double, nullable=False)
+    w_1_3    = Column(Double, nullable=False)
+
+    w_2_1    = Column(Double, nullable=False)
+    w_2_2    = Column(Double, nullable=False)
+    w_2_3    = Column(Double, nullable=False)
     
     is_sent = Column(Boolean, nullable=False, default=False)
     
@@ -33,7 +37,8 @@ class Measurement(BaseData):
                        h_2_1, h_2_2, h_2_3,
                        l_1_1, l_1_2, l_1_3, 
                        l_2_1, l_2_2, l_2_3,
-                       w_1,   w_2,   w_3
+                       w_1_1, w_1_2, w_1_3, 
+                       w_2_1, w_2_2, w_2_3,
                        ):
         BaseData.__init__(self)
         
@@ -53,9 +58,13 @@ class Measurement(BaseData):
         self.l_2_2   = l_2_2
         self.l_2_3   = l_2_3
         
-        self.w_1     = w_1
-        self.w_2     = w_2
-        self.w_3     = w_3
+        self.w_1_1   = w_1_1
+        self.w_1_2   = w_1_2
+        self.w_1_3   = w_1_3
+        
+        self.w_2_1   = w_2_1
+        self.w_2_2   = w_2_2
+        self.w_2_3   = w_2_3
         
         self.is_sent = False
 
